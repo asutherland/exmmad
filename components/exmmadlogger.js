@@ -223,7 +223,8 @@ ExmmadConsoleListener.prototype = {
       p.out(colorCode, desc, "n", ": ", null, aMessage.errorMessage,
             "s", " [", null, aMessage.category, null, "]");
 
-      if ((aMessage instanceof nsIScriptErrorEx) && aMessage.location)
+      if (nsIScriptErrorEx &&
+          (aMessage instanceof nsIScriptErrorEx) && aMessage.location)
         this.dumpStack(aMessage.location);
       else
         this.dumpStack({name: "(nostack)",
