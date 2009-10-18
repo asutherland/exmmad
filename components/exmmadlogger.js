@@ -224,7 +224,8 @@ ExmmadConsoleListener.prototype = {
             "s", " [", null, aMessage.category, null, "]");
 
       if (nsIScriptErrorEx &&
-          (aMessage instanceof nsIScriptErrorEx) && aMessage.location)
+          (aMessage instanceof nsIScriptErrorEx) &&
+          aMessage.location)
         this.dumpStack(aMessage.location);
       else
         this.dumpStack({name: "(nostack)",
