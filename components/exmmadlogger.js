@@ -208,6 +208,10 @@ ExmmadConsoleListener.prototype = {
 
     try{
     if (aMessage instanceof nsIScriptError) {
+      // The CSS Parser just makes my life sad.
+      if (aMessage.category == "CSS Parser")
+ 	return;
+
       let colorCode, desc;
       if (aMessage.flags & nsIScriptError.warningFlag) {
         colorCode = "w";
