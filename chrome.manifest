@@ -1,1 +1,4 @@
 resource exmmad ./
+component {60718f0e-5a0b-47ec-8a08-0380b14f3f80} components/exmmadlogger.js
+contract @mozillamessaging.com/exmmad/consolelistener;1 {60718f0e-5a0b-47ec-8a08-0380b14f3f80}
+category profile-after-change exmmad @mozillamessaging.com/exmmad/consolelistener;1

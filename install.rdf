@@ -11,8 +11,8 @@
     <em:targetApplication>
       <Description>
         <em:id>toolkit@mozilla.org</em:id> <!-- toolkit -->
-        <em:minVersion>1.9.0</em:minVersion>
-        <em:maxVersion>2.0.*</em:maxVersion>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>15.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>

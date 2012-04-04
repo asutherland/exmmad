@@ -118,11 +118,15 @@ let p = {
       }
 
 
+
       let t = val + "";
       offset += t.length;
       s += t;
     }
-    dump(s + this._cmap["n"] + "\n");
+    if (s[s.length - 1] === "\n")
+      dump(s + this._cmap["n"]);
+    else
+      dump(s + this._cmap["n"] + "\n");
   }
 };
 p._init();
@@ -165,13 +169,6 @@ ExmmadConsoleListener.prototype = {
     return interfaces;
   },
 
-  // get this contractID registered for certain categories via XPCOMUtils
-  _xpcom_categories: [
-    // make Application a startup observer
-    { category: "app-startup", service: true },
-  ],
-
-
   initialize: function () {
     this.consoleService = Cc["@mozilla.org/consoleservice;1"]
                             .getService(Ci.nsIConsoleService);
@@ -198,7 +195,7 @@ ExmmadConsoleListener.prototype = {
   },
 
   observe: function (aMessage, aTopic, aData) {
-    if (aTopic == "app-startup")
+    if (aTopic == "profile-after-change")
       return;
     else if (aTopic == "quit-application") {
       this.shutdown();
@@ -247,6 +244,4 @@ ExmmadConsoleListener.prototype = {
 
 
 var components = [ExmmadConsoleListener];
-function NSGetModule(compMgr, fileSpec) {
-  return XPCOMUtils.generateModule(components);
-}
+var NSGetFactory = XPCOMUtils.generateNSGetFactory(components);
